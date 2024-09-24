@@ -14,11 +14,9 @@ class EmployeeDaoImplTest {
 
         List<Employee> expected = generateAllResults();
         List<Employee> results = empDao.getAllEmployees();
-        assertEquals(23, results.size());
+        assertEquals(6, results.size());
 
-        // THIS IS A HACK - I DON'T WANT TO CREATE 23 EMPLOYEES BY HAND!!
-        // Normally we would do the full length of the list
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < results.size(); i++) {
             assertEmployeeEquals(expected.get(i),results.get(i));
         }
     }
@@ -33,9 +31,9 @@ class EmployeeDaoImplTest {
     @org.junit.jupiter.api.Test
     void getById_MatchFound() {
         EmployeeDao empDao = new EmployeeDaoImpl("test_classicmodels");
-        Employee expected = new Employee(1625, "Kato", "Yoshimi", "x102", "ykato@classicmodelcars.com", "5", 1621,
-                "Sales Rep");
-        Employee result = empDao.getById(1625);
+        Employee expected = new Employee(1002, "Murphy",  "Diane", "x5800", "dmurphy@classicmodelcars.com", "1", 0,
+                "President");
+        Employee result = empDao.getById(1002);
         assertEmployeeEquals(expected, result);
     }
 
@@ -51,7 +49,7 @@ class EmployeeDaoImplTest {
     }
 
     List<Employee> generateAllResults(){
-        List<Employee> results = new ArrayList();
+        List<Employee> results = new ArrayList<Employee>();
 
         Employee e1 = new Employee(1002, "Murphy",  "Diane", "x5800", "dmurphy@classicmodelcars.com", "1", 0,
                 "President");
